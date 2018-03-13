@@ -13,7 +13,7 @@ build/log.o: build src/log.c Makefile
 	gcc -I ./src -flto -O2 -g -c src/log.c -o build/log.o
 
 build/systemd-bootchart: build/bootchart.o build/log.o
-	gcc -flto -g -Wl,--gc-sections \
+	gcc -flto -g -Wl,--gc-sections -Wl,--print-gc-sections \
 	  build/bootchart.o build/log.o \
           -o build/systemd-bootchart
 
